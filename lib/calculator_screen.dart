@@ -50,177 +50,180 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
           // buttons
 
-          Expanded(
-            flex: 2,
-            child: Container(
-              decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 55, 72, 80),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: 'Ac',
-                        myColor: const Color.fromARGB(255, 169, 216, 240),
-                        onPress: () {
-                          userInput = '';
-                          answer = '';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '+/-',
+          Flexible(
+            fit: FlexFit.tight,
+            child: Expanded(
+              flex: 2,
+              child: Container(
+                decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 55, 72, 80),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16))),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Mybutton(
+                          title: 'Ac',
                           myColor: const Color.fromARGB(255, 169, 216, 240),
                           onPress: () {
-                            userInput += '+/-';
+                            userInput = '';
+                            answer = '';
                             setState(() {});
-                          }),
-                      Mybutton(
-                          title: '%',
+                          },
+                        ),
+                        Mybutton(
+                            title: '+/-',
+                            myColor: const Color.fromARGB(255, 169, 216, 240),
+                            onPress: () {
+                              userInput += '+/-';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                            title: '%',
+                            myColor: const Color.fromARGB(255, 169, 216, 240),
+                            onPress: () {
+                              userInput += '%';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                          title: '/',
                           myColor: const Color.fromARGB(255, 169, 216, 240),
                           onPress: () {
-                            userInput += '%';
+                            userInput += '/';
                             setState(() {});
-                          }),
-                      Mybutton(
-                        title: '/',
-                        myColor: const Color.fromARGB(255, 169, 216, 240),
-                        onPress: () {
-                          userInput += '/';
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: '7',
-                        onPress: () {
-                          userInput += '7';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '8',
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Mybutton(
+                          title: '7',
                           onPress: () {
-                            userInput += '8';
+                            userInput += '7';
                             setState(() {});
-                          }),
-                      Mybutton(
-                          title: '9',
+                          },
+                        ),
+                        Mybutton(
+                            title: '8',
+                            onPress: () {
+                              userInput += '8';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                            title: '9',
+                            onPress: () {
+                              userInput += '9';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                          title: 'x',
+                          myColor: const Color.fromARGB(255, 169, 216, 240),
                           onPress: () {
-                            userInput += '9';
+                            userInput += 'x';
                             setState(() {});
-                          }),
-                      Mybutton(
-                        title: 'x',
-                        myColor: const Color.fromARGB(255, 169, 216, 240),
-                        onPress: () {
-                          userInput += 'x';
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: '4',
-                        onPress: () {
-                          userInput += '4';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '5',
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Mybutton(
+                          title: '4',
                           onPress: () {
-                            userInput += '5';
+                            userInput += '4';
                             setState(() {});
-                          }),
-                      Mybutton(
-                          title: '6',
+                          },
+                        ),
+                        Mybutton(
+                            title: '5',
+                            onPress: () {
+                              userInput += '5';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                            title: '6',
+                            onPress: () {
+                              userInput += '6';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                          title: '-',
+                          myColor: const Color.fromARGB(255, 169, 216, 240),
                           onPress: () {
-                            userInput += '6';
+                            userInput += '-';
                             setState(() {});
-                          }),
-                      Mybutton(
-                        title: '-',
-                        myColor: const Color.fromARGB(255, 169, 216, 240),
-                        onPress: () {
-                          userInput += '-';
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: '1',
-                        onPress: () {
-                          userInput += '1';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '2',
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Mybutton(
+                          title: '1',
                           onPress: () {
-                            userInput += '2';
+                            userInput += '1';
                             setState(() {});
-                          }),
-                      Mybutton(
-                          title: '3',
+                          },
+                        ),
+                        Mybutton(
+                            title: '2',
+                            onPress: () {
+                              userInput += '2';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                            title: '3',
+                            onPress: () {
+                              userInput += '3';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                          title: '+',
+                          myColor: const Color.fromARGB(255, 169, 216, 240),
                           onPress: () {
-                            userInput += '3';
+                            userInput += '+';
                             setState(() {});
-                          }),
-                      Mybutton(
-                        title: '+',
-                        myColor: const Color.fromARGB(255, 169, 216, 240),
-                        onPress: () {
-                          userInput += '+';
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: '0',
-                        onPress: () {
-                          userInput += '0';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '.',
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Mybutton(
+                          title: '0',
                           onPress: () {
-                            userInput += '.';
+                            userInput += '0';
                             setState(() {});
-                          }),
-                      Mybutton(
-                          title: 'Del',
+                          },
+                        ),
+                        Mybutton(
+                            title: '.',
+                            onPress: () {
+                              userInput += '.';
+                              setState(() {});
+                            }),
+                        Mybutton(
+                            title: 'Del',
+                            onPress: () {
+                              userInput =
+                                  userInput.substring(0, userInput.length - 1);
+                              setState(() {});
+                            }),
+                        Mybutton(
+                          title: '=',
+                          myColor: const Color.fromARGB(255, 169, 216, 240),
                           onPress: () {
-                            userInput =
-                                userInput.substring(0, userInput.length - 1);
+                            equalPress();
                             setState(() {});
-                          }),
-                      Mybutton(
-                        title: '=',
-                        myColor: const Color.fromARGB(255, 169, 216, 240),
-                        onPress: () {
-                          equalPress();
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                ],
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           )
