@@ -57,7 +57,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             fit: FlexFit.tight,
             child: Container(
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10)),
