@@ -16,16 +16,17 @@ class Mybutton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
         child: InkWell(
           onTap: onPress,
           child: Container(
             height: 80,
-            decoration: BoxDecoration(shape: BoxShape.circle, color: myColor),
+            decoration:
+                BoxDecoration(shape: BoxShape.rectangle, color: myColor),
             child: Center(
               child: Text(
                 title,
-                style: GoogleFonts.getFont('Pacifico', fontSize: 30),
+                style: GoogleFonts.getFont('Orbitron', fontSize: 30),
               ),
             ),
           ),

@@ -17,10 +17,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 30, 43, 49),
+        backgroundColor: const Color.fromARGB(255, 33, 35, 36),
         // appBar: AppBar(title: const Text('calculator')),
         body: Column(children: [
-          Expanded(
+          Flexible(
+            flex: 0,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 30),
               child: Column(
@@ -31,8 +32,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     alignment: Alignment.bottomRight,
                     child: Text(
                       userInput.toString(),
-                      style: GoogleFonts.getFont('Pacifico',
-                          fontSize: 30, color: Colors.white),
+                      style: GoogleFonts.getFont('Orbitron',
+                          fontSize: 30,
+                          color: const Color.fromARGB(255, 71, 255, 169)),
                     ),
                   ),
                   const SizedBox(
@@ -40,8 +42,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   ),
                   Text(
                     answer.toString(),
-                    style: GoogleFonts.getFont('Pacifico',
-                        fontSize: 30, color: Colors.white),
+                    style: GoogleFonts.getFont('Orbitron',
+                        fontSize: 30,
+                        color: const Color.fromARGB(255, 71, 255, 169)),
                   ),
                 ],
               ),
@@ -52,178 +55,176 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
           Flexible(
             fit: FlexFit.tight,
-            child: Expanded(
-              flex: 2,
-              child: Container(
-                decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 55, 72, 80),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16),
-                        topRight: Radius.circular(16))),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Mybutton(
-                          title: 'Ac',
-                          myColor: const Color.fromARGB(255, 169, 216, 240),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 0, 0, 0),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10)),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Mybutton(
+                        title: 'Ac',
+                        myColor: const Color.fromARGB(255, 71, 255, 169),
+                        onPress: () {
+                          userInput = '';
+                          answer = '';
+                          setState(() {});
+                        },
+                      ),
+                      Mybutton(
+                          title: '+/-',
+                          myColor: const Color.fromARGB(255, 71, 255, 169),
                           onPress: () {
-                            userInput = '';
-                            answer = '';
+                            userInput += '+/-';
                             setState(() {});
-                          },
-                        ),
-                        Mybutton(
-                            title: '+/-',
-                            myColor: const Color.fromARGB(255, 169, 216, 240),
-                            onPress: () {
-                              userInput += '+/-';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                            title: '%',
-                            myColor: const Color.fromARGB(255, 169, 216, 240),
-                            onPress: () {
-                              userInput += '%';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                          title: '/',
-                          myColor: const Color.fromARGB(255, 169, 216, 240),
+                          }),
+                      Mybutton(
+                          title: '%',
+                          myColor: const Color.fromARGB(255, 71, 255, 169),
                           onPress: () {
-                            userInput += '/';
+                            userInput += '%';
                             setState(() {});
-                          },
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Mybutton(
-                          title: '7',
+                          }),
+                      Mybutton(
+                        title: '/',
+                        myColor: const Color.fromARGB(255, 71, 255, 169),
+                        onPress: () {
+                          userInput += '/';
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Mybutton(
+                        title: '7',
+                        onPress: () {
+                          userInput += '7';
+                          setState(() {});
+                        },
+                      ),
+                      Mybutton(
+                          title: '8',
                           onPress: () {
-                            userInput += '7';
+                            userInput += '8';
                             setState(() {});
-                          },
-                        ),
-                        Mybutton(
-                            title: '8',
-                            onPress: () {
-                              userInput += '8';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                            title: '9',
-                            onPress: () {
-                              userInput += '9';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                          title: 'x',
-                          myColor: const Color.fromARGB(255, 169, 216, 240),
+                          }),
+                      Mybutton(
+                          title: '9',
                           onPress: () {
-                            userInput += 'x';
+                            userInput += '9';
                             setState(() {});
-                          },
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Mybutton(
-                          title: '4',
+                          }),
+                      Mybutton(
+                        title: 'x',
+                        myColor: const Color.fromARGB(255, 71, 255, 169),
+                        onPress: () {
+                          userInput += 'x';
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Mybutton(
+                        title: '4',
+                        onPress: () {
+                          userInput += '4';
+                          setState(() {});
+                        },
+                      ),
+                      Mybutton(
+                          title: '5',
                           onPress: () {
-                            userInput += '4';
+                            userInput += '5';
                             setState(() {});
-                          },
-                        ),
-                        Mybutton(
-                            title: '5',
-                            onPress: () {
-                              userInput += '5';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                            title: '6',
-                            onPress: () {
-                              userInput += '6';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                          title: '-',
-                          myColor: const Color.fromARGB(255, 169, 216, 240),
+                          }),
+                      Mybutton(
+                          title: '6',
                           onPress: () {
-                            userInput += '-';
+                            userInput += '6';
                             setState(() {});
-                          },
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Mybutton(
-                          title: '1',
+                          }),
+                      Mybutton(
+                        title: '-',
+                        myColor: const Color.fromARGB(255, 71, 255, 169),
+                        onPress: () {
+                          userInput += '-';
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Mybutton(
+                        title: '1',
+                        onPress: () {
+                          userInput += '1';
+                          setState(() {});
+                        },
+                      ),
+                      Mybutton(
+                          title: '2',
                           onPress: () {
-                            userInput += '1';
+                            userInput += '2';
                             setState(() {});
-                          },
-                        ),
-                        Mybutton(
-                            title: '2',
-                            onPress: () {
-                              userInput += '2';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                            title: '3',
-                            onPress: () {
-                              userInput += '3';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                          title: '+',
-                          myColor: const Color.fromARGB(255, 169, 216, 240),
+                          }),
+                      Mybutton(
+                          title: '3',
                           onPress: () {
-                            userInput += '+';
+                            userInput += '3';
                             setState(() {});
-                          },
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Mybutton(
-                          title: '0',
+                          }),
+                      Mybutton(
+                        title: '+',
+                        myColor: const Color.fromARGB(255, 71, 255, 169),
+                        onPress: () {
+                          userInput += '+';
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Mybutton(
+                        title: '0',
+                        onPress: () {
+                          userInput += '0';
+                          setState(() {});
+                        },
+                      ),
+                      Mybutton(
+                          title: '.',
                           onPress: () {
-                            userInput += '0';
+                            userInput += '.';
                             setState(() {});
-                          },
-                        ),
-                        Mybutton(
-                            title: '.',
-                            onPress: () {
-                              userInput += '.';
-                              setState(() {});
-                            }),
-                        Mybutton(
-                            title: 'Del',
-                            onPress: () {
-                              userInput =
-                                  userInput.substring(0, userInput.length - 1);
-                              setState(() {});
-                            }),
-                        Mybutton(
-                          title: '=',
-                          myColor: const Color.fromARGB(255, 169, 216, 240),
+                          }),
+                      Mybutton(
+                          title: 'Del',
                           onPress: () {
-                            equalPress();
+                            userInput =
+                                userInput.substring(0, userInput.length - 1);
                             setState(() {});
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                          }),
+                      Mybutton(
+                        title: '=',
+                        myColor: const Color.fromARGB(255, 71, 255, 169),
+                        onPress: () {
+                          equalPress();
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           )
