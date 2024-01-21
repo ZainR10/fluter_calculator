@@ -11,7 +11,9 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
+  //fucntion to store user input
   var userInput = '';
+  //fucntion for  anwser
   var answer = '';
   @override
   Widget build(BuildContext context) {
@@ -233,11 +235,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     );
   }
 
+//fucntion for equal button
+//this whole fuction is created with the help of math expression package.this function will convert concatinated strings
+//into mathematical functionalities like 1+1 will be equal to 2 not 11<---(concotination).when the equal button is pressed
   void equalPress() {
     String finalUserInput = userInput;
-    finalUserInput = userInput.replaceAll('x', '*');
-    Parser p = Parser();
-    Expression expression = p.parse(finalUserInput);
+    finalUserInput = userInput.replaceAll('x', '*'); //to replace x to multiply
+    Parser p = Parser(); //to parse string to int
+    Expression expression = p.parse(finalUserInput); //for the right answer
     ContextModel contextModel = ContextModel();
 
     double eval = expression.evaluate(EvaluationType.REAL, contextModel);
