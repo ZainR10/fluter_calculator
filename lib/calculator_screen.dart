@@ -11,14 +11,15 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
+  //fucntion to store user input
   var userInput = '';
+  //fucntion for  anwser
   var answer = '';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 33, 35, 36),
-        // appBar: AppBar(title: const Text('calculator')),
         body: Column(children: [
           Flexible(
             flex: 0,
