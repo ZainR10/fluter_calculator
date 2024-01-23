@@ -14,16 +14,16 @@ class Mybutton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double buttonHeight = MediaQuery.of(context).size.height * 0.12;
-    double buttonWidth = MediaQuery.of(context).size.width * 0.22;
+    // double buttonHeight = MediaQuery.of(context).size.height * 0.12;
+    // double buttonWidth = MediaQuery.of(context).size.width * 0.22;
     return SizedBox(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
         child: InkWell(
           onTap: onPress,
           child: Container(
-            height: buttonHeight,
-            width: buttonWidth,
+            height: 80,
+            // width: buttonWidth,
             decoration:
                 BoxDecoration(shape: BoxShape.rectangle, color: myColor),
             child: Center(
