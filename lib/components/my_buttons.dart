@@ -29,7 +29,8 @@ class Mybutton extends StatelessWidget {
             child: Center(
               child: Text(
                 title,
-                style: GoogleFonts.getFont('Orbitron', fontSize: 30),
+                style: GoogleFonts.getFont('Orbitron',
+                    fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
           ),

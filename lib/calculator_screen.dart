@@ -18,26 +18,22 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   //list of buttons
   List<String> buttons = [
-    'Ac',
-    '+/-',
-    '%',
-    '/',
     '7',
     '8',
     '9',
-    'x',
+    '/',
     '4',
     '5',
     '6',
-    '-',
+    'x',
     '1',
     '2',
     '3',
-    '+',
+    '-',
+    'AC',
     '0',
-    '.',
-    'Del',
-    '='
+    '=',
+    '+',
   ];
 
   @override
@@ -47,68 +43,54 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         backgroundColor: const Color.fromARGB(255, 33, 35, 36),
         body: Column(
           children: [
-            Flexible(
-              flex: 0,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(24),
+                alignment: Alignment.topRight,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment:
+                      MainAxisAlignment.center, // Align children to the bottom
+                  crossAxisAlignment:
+                      CrossAxisAlignment.end, // Align children to the right
                   children: [
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Text(
-                        userInput.toString(),
-                        style: GoogleFonts.getFont('Orbitron',
-                            fontSize: 30,
-                            color: const Color.fromARGB(255, 71, 255, 169)),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
+                    Text(
+                      userInput.toString(),
+                      style: GoogleFonts.getFont('Orbitron',
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: const Color.fromARGB(255, 71, 255, 169)),
                     ),
                     Text(
                       answer.toString(),
                       style: GoogleFonts.getFont('Orbitron',
                           fontSize: 30,
+                          fontWeight: FontWeight.bold,
                           color: const Color.fromARGB(255, 71, 255, 169)),
                     ),
                   ],
                 ),
               ),
             ),
-
-            // buttons
-
-            Flexible(
-              fit: FlexFit.tight,
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)),
-                ),
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    crossAxisSpacing: 8.0,
-                    mainAxisSpacing: 8.0,
-                  ),
-                  itemCount: buttons.length,
-                  itemBuilder: (context, index) {
-                    return Mybutton(
-                      title: buttons[index],
-                      onPress: () {
-                        handleButtonPress(buttons[index]);
-                      },
-                    );
+            GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 4,
+              childAspectRatio: 1.0,
+              padding: const EdgeInsets.all(16),
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
+              children: buttons.map((buttonText) {
+                return Mybutton(
+                  title: buttonText,
+                  onPress: () {
+                    handleButtonPress(buttonText);
                   },
-                ),
-              ),
+                );
+              }).toList(),
             ),
           ],
         ),
+
+        // buttons
       ),
     );
   }
@@ -119,7 +101,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       userInput = userInput.substring(0, userInput.length - 1);
     } else if (buttonValue == '=') {
       equalPress();
-    } else if (buttonValue == 'Ac') {
+    } else if (buttonValue == 'AC') {
       userInput = '';
       answer = '';
     } else {
