@@ -45,6 +45,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           children: [
             Expanded(
               child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.indigo[200],
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20))),
                 padding: const EdgeInsets.all(24),
                 alignment: Alignment.topRight,
                 child: Column(
@@ -58,14 +63,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       style: GoogleFonts.getFont('Orbitron',
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 71, 255, 169)),
+                          color: Colors.indigo[50]),
                     ),
                     Text(
                       answer.toString(),
                       style: GoogleFonts.getFont('Orbitron',
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 71, 255, 169)),
+                          color: Colors.indigo[50]),
                     ),
                   ],
                 ),
