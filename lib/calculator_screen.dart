@@ -11,6 +11,35 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
+// logic for del,= and AC because i am using  gridview and have to give different logic thats why created this fucntion.
+  void handleButtonPress(String buttonValue) {
+    if (buttonValue == 'Del') {
+      userInput = userInput.substring(0, userInput.length - 1);
+    } else if (buttonValue == '=') {
+      equalPress();
+    } else if (buttonValue == 'AC') {
+      userInput = '';
+      answer = '';
+    } else {
+      userInput += buttonValue;
+    }
+    setState(() {});
+  }
+
+  void equalPress() {
+    //logic for = press.this method is done with help of math expression package.
+    String finalUserInput = userInput;
+    finalUserInput = userInput.replaceAll('x',
+        '*'); //x repalce multiply button but will perform multiply functionality
+    Parser p = Parser(); //paser for string values into int
+    Expression expression = p.parse(finalUserInput);
+    ContextModel contextModel = ContextModel();
+
+    double eval = expression.evaluate(EvaluationType.REAL, contextModel);
+    answer = eval.toString();
+    setState(() {});
+  }
+
   //fucntion to store user input
   var userInput = '';
   //fucntion for  anwser
@@ -35,35 +64,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     '=',
     '+',
   ];
-// // logic for del,= and AC because i am using  gridview and have to give different logic thats why created this fucntion.
-//   void handleButtonPress(String buttonValue) {
-//     if (buttonValue == 'Del') {
-//       userInput = userInput.substring(0, userInput.length - 1);
-//     } else if (buttonValue == '=') {
-//       equalPress();
-//     } else if (buttonValue == 'AC') {
-//       userInput = '';
-//       answer = '';
-//     } else {
-//       userInput += buttonValue;
-//     }
-//     setState(() {});
-//   }
 
-//   void equalPress() {
-//     //logic for = press.this method is done with help of math expression package.
-//     String finalUserInput = userInput;
-//     finalUserInput = userInput.replaceAll('x',
-//         '*'); //x repalce multiply button but will perform multiply functionality
-//     Parser p = Parser(); //paser for string values into int
-//     Expression expression = p.parse(finalUserInput);
-//     ContextModel contextModel = ContextModel();
-
-//     double eval = expression.evaluate(EvaluationType.REAL, contextModel);
-//     answer = eval.toString();
-//     setState(() {});
-//   }
-// }
   @override
   Widget build(BuildContext context) {
     Orientation orientation = MediaQuery.of(context).orientation;
@@ -74,10 +75,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       flex: 1,
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.indigo[200],
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20))),
+          color: Colors.indigo[200],
+          borderRadius: orientation == Orientation.portrait
+              ? const BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20))
+              : const BorderRadius.only(
+                  bottomRight: Radius.circular(20),
+                  topRight: Radius.circular(20)),
+        ),
         padding: const EdgeInsets.all(24),
         alignment: Alignment.topRight,
         child: Column(
@@ -121,13 +127,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           return Mybutton(
             title: buttonText,
             onPress: () {
-              // handleButtonPress(buttonText);
+              handleButtonPress(buttonText);
             },
           );
         }).toList(),
       ),
     );
     return Scaffold(
+      backgroundColor: Colors.grey[800],
       body: orientation == Orientation.portrait
           ? Column(
               children: [
@@ -143,36 +150,4 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             ),
     );
   }
-
-  // buttons
 }
-
-// // logic for del,= and AC because i am using  gridview and have to give different logic thats why created this fucntion.
-//   void handleButtonPress(String buttonValue) {
-//     if (buttonValue == 'Del') {
-//       userInput = userInput.substring(0, userInput.length - 1);
-//     } else if (buttonValue == '=') {
-//       equalPress();
-//     } else if (buttonValue == 'AC') {
-//       userInput = '';
-//       answer = '';
-//     } else {
-//       userInput += buttonValue;
-//     }
-//     setState(() {});
-//   }
-
-//   void equalPress() {
-//     //logic for = press.this method is done with help of math expression package.
-//     String finalUserInput = userInput;
-//     finalUserInput = userInput.replaceAll('x',
-//         '*'); //x repalce multiply button but will perform multiply functionality
-//     Parser p = Parser(); //paser for string values into int
-//     Expression expression = p.parse(finalUserInput);
-//     ContextModel contextModel = ContextModel();
-
-//     double eval = expression.evaluate(EvaluationType.REAL, contextModel);
-//     answer = eval.toString();
-//     setState(() {});
-//   }
-// }
