@@ -11,241 +11,141 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
-  //fucntion to store user input
-  var userInput = '';
-  //fucntion for  anwser
-  var answer = '';
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 33, 35, 36),
-        // appBar: AppBar(title: const Text('calculator')),
-        body: Column(children: [
-          Flexible(
-            flex: 0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Text(
-                      userInput.toString(),
-                      style: GoogleFonts.getFont('Orbitron',
-                          fontSize: 30,
-                          color: const Color.fromARGB(255, 71, 255, 169)),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    answer.toString(),
-                    style: GoogleFonts.getFont('Orbitron',
-                        fontSize: 30,
-                        color: const Color.fromARGB(255, 71, 255, 169)),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // buttons
-
-          Flexible(
-            fit: FlexFit.tight,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10)),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: 'Ac',
-                        myColor: const Color.fromARGB(255, 71, 255, 169),
-                        onPress: () {
-                          userInput = '';
-                          answer = '';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '+/-',
-                          myColor: const Color.fromARGB(255, 71, 255, 169),
-                          onPress: () {
-                            userInput += '+/-';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                          title: '%',
-                          myColor: const Color.fromARGB(255, 71, 255, 169),
-                          onPress: () {
-                            userInput += '%';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                        title: '/',
-                        myColor: const Color.fromARGB(255, 71, 255, 169),
-                        onPress: () {
-                          userInput += '/';
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: '7',
-                        onPress: () {
-                          userInput += '7';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '8',
-                          onPress: () {
-                            userInput += '8';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                          title: '9',
-                          onPress: () {
-                            userInput += '9';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                        title: 'x',
-                        myColor: const Color.fromARGB(255, 71, 255, 169),
-                        onPress: () {
-                          userInput += 'x';
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: '4',
-                        onPress: () {
-                          userInput += '4';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '5',
-                          onPress: () {
-                            userInput += '5';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                          title: '6',
-                          onPress: () {
-                            userInput += '6';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                        title: '-',
-                        myColor: const Color.fromARGB(255, 71, 255, 169),
-                        onPress: () {
-                          userInput += '-';
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: '1',
-                        onPress: () {
-                          userInput += '1';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '2',
-                          onPress: () {
-                            userInput += '2';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                          title: '3',
-                          onPress: () {
-                            userInput += '3';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                        title: '+',
-                        myColor: const Color.fromARGB(255, 71, 255, 169),
-                        onPress: () {
-                          userInput += '+';
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Mybutton(
-                        title: '0',
-                        onPress: () {
-                          userInput += '0';
-                          setState(() {});
-                        },
-                      ),
-                      Mybutton(
-                          title: '.',
-                          onPress: () {
-                            userInput += '.';
-                            setState(() {});
-                          }),
-                      Mybutton(
-                          title: 'Del',
-                          onPress: () {
-                            userInput =
-                                userInput.substring(0, userInput.length - 1);
-                            setState(() {});
-                          }),
-                      Mybutton(
-                        title: '=',
-                        myColor: const Color.fromARGB(255, 71, 255, 169),
-                        onPress: () {
-                          equalPress();
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          )
-        ]),
-      ),
-    );
+// logic for del,= and AC because i am using  gridview and have to give different logic thats why created this fucntion.
+  void handleButtonPress(String buttonValue) {
+    if (buttonValue == 'Del') {
+      userInput = userInput.substring(0, userInput.length - 1);
+    } else if (buttonValue == '=') {
+      equalPress();
+    } else if (buttonValue == 'AC') {
+      userInput = '';
+      answer = '';
+    } else {
+      userInput += buttonValue;
+    }
+    setState(() {});
   }
 
-//fucntion for equal button
-//this whole fuction is created with the help of math expression package.this function will convert concatinated strings
-//into mathematical functionalities like 1+1 will be equal to 2 not 11<---(concotination).when the equal button is pressed
   void equalPress() {
+    //logic for = press.this method is done with help of math expression package.
     String finalUserInput = userInput;
-    finalUserInput = userInput.replaceAll('x', '*'); //to replace x to multiply
-    Parser p = Parser(); //to parse string to int
-    Expression expression = p.parse(finalUserInput); //for the right answer
+    finalUserInput = userInput.replaceAll('x',
+        '*'); //x repalce multiply button but will perform multiply functionality
+    Parser p = Parser(); //paser for string values into int
+    Expression expression = p.parse(finalUserInput);
     ContextModel contextModel = ContextModel();
 
     double eval = expression.evaluate(EvaluationType.REAL, contextModel);
     answer = eval.toString();
+    setState(() {});
+  }
+
+  //fucntion to store user input
+  var userInput = '';
+  //fucntion for  anwser
+  var answer = '';
+
+  //list of buttons
+  List<String> buttons = [
+    '7',
+    '8',
+    '9',
+    '%',
+    '4',
+    '5',
+    '6',
+    'x',
+    '1',
+    '2',
+    '3',
+    '-',
+    'AC',
+    '0',
+    '=',
+    '+',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
+
+    Widget display = Expanded(
+      flex: 1,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.indigo[200],
+          borderRadius: orientation == Orientation.portrait
+              ? const BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20))
+              : const BorderRadius.only(
+                  bottomRight: Radius.circular(20),
+                  topRight: Radius.circular(20)),
+        ),
+        padding: const EdgeInsets.all(24),
+        alignment: Alignment.topRight,
+        child: Column(
+          mainAxisAlignment:
+              MainAxisAlignment.center, // Align children to the bottom
+          crossAxisAlignment:
+              CrossAxisAlignment.end, // Align children to the right
+          children: [
+            Text(
+              userInput.toString(),
+              style: GoogleFonts.getFont('Orbitron',
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.indigo[50]),
+            ),
+            Text(
+              answer.toString(),
+              style: GoogleFonts.getFont('Orbitron',
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.indigo.shade400),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    Widget buttonGrid = Expanded(
+      flex: orientation == Orientation.portrait
+          ? 2 // Takes 2 parts of the screen in landscape
+          : 1, // or the full height in portrait
+
+      child: GridView.count(
+        shrinkWrap: true,
+        crossAxisCount: 4,
+        childAspectRatio: 1.0,
+        padding: const EdgeInsets.all(16),
+        crossAxisSpacing: 8.0,
+        mainAxisSpacing: 28.0,
+        children: buttons.map((buttonText) {
+          return Mybutton(
+            title: buttonText,
+            onPress: () {
+              handleButtonPress(buttonText);
+            },
+          );
+        }).toList(),
+      ),
+    );
+    return Scaffold(
+      backgroundColor: Colors.grey[800],
+      body: orientation == Orientation.portrait
+          ? Column(
+              children: [
+                display,
+                buttonGrid,
+              ],
+            )
+          : Row(
+              children: [
+                display,
+                buttonGrid,
+              ],
+            ),
+    );
   }
 }
