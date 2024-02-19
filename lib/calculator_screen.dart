@@ -69,8 +69,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     Orientation orientation = MediaQuery.of(context).orientation;
 
-    // backgroundColor: const Color.fromARGB(255, 33, 35, 36)
-
     Widget display = Expanded(
       flex: 1,
       child: Container(
@@ -95,16 +93,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             Text(
               userInput.toString(),
               style: GoogleFonts.getFont('Orbitron',
-                  fontSize: 30,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   color: Colors.indigo[50]),
             ),
             Text(
               answer.toString(),
               style: GoogleFonts.getFont('Orbitron',
-                  fontSize: 30,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
-                  color: Colors.indigo[50]),
+                  color: Colors.indigo.shade400),
             ),
           ],
         ),
@@ -113,8 +111,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
     Widget buttonGrid = Expanded(
       flex: orientation == Orientation.portrait
-          ? 2
-          : 1, // Takes 2 parts of the screen in landscape or the full height in portrait
+          ? 2 // Takes 2 parts of the screen in landscape
+          : 1, // or the full height in portrait
 
       child: GridView.count(
         shrinkWrap: true,
@@ -122,7 +120,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         childAspectRatio: 1.0,
         padding: const EdgeInsets.all(16),
         crossAxisSpacing: 8.0,
-        mainAxisSpacing: 8.0,
+        mainAxisSpacing: 28.0,
         children: buttons.map((buttonText) {
           return Mybutton(
             title: buttonText,
