@@ -2,5 +2,5 @@
 
 A Basic Calculator app with responsive UI. 
 
-![google-1762248_1280](https://github.com/ZainR10/flutter_calculator/assets/128054811/f04050e7-41d2-4eb8-bdba-8069d12d655a)
-![Screenshot_20240310-203624](https://github.com/ZainR10/flutter_calculator/assets/128054811/da500cf0-1efc-4693-bc05-ebccfd57d54a)
+![r](https://github.com/ZainR10/flutter_calculator/assets/128054811/e3d79442-d721-415d-a8b0-27524e2d0f16)
+![resize](https://github.com/ZainR10/flutter_calculator/assets/128054811/ff479aa6-622a-49a9-9c76-236bbdf62938)
